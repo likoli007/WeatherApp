@@ -9,13 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            VStack {
+                Text("CityName1")
+                Text("Temperature")
+                Text("weather type")
+                Text("high/low")
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.accentColor)
+                Text("Hello, world!")
+            }
+            .padding().border(.blue)
+            VStack {
+                Text("AQI SHOW")
+            }.padding().border(.green)
+            VStack {
+                Text("hourly forecast")
+            }.padding().border(.green)
+            VStack {
+                Text("daily forecast")
+            }.padding().border(.green)
         }
-        .padding()
     }
 }
 
@@ -24,3 +39,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
