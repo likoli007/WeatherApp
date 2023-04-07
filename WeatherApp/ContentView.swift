@@ -10,9 +10,6 @@ import SpriteKit
 
 struct ContentView: View {
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
-    @State var tick = false
-    
-    //let animation: Animation = Animation.linear(duration:10.0).repeatForever(autoreverses: false)
     
     let img: Image = Image("Daco_4555830").resizable()
     let img2: Image = Image("Daco_4318142").resizable()
@@ -24,6 +21,7 @@ struct ContentView: View {
         ZStack{
             backgroundSunshine
             
+            //clouds animation
             ZStack {
                 img.offset(x: CGFloat(ofs1), y: -300)
                     .aspectRatio(contentMode: .fill)
@@ -32,8 +30,8 @@ struct ContentView: View {
                         ofs1 = ofs1-1
                         if ofs1 < -275{
                             ofs1 = 650
-                        }
-                    }.ignoresSafeArea()
+                    }
+                }.ignoresSafeArea()
                 img2.offset(x: CGFloat(ofs2), y: -300)
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200.0, height: 300, alignment: .leading)
@@ -41,10 +39,9 @@ struct ContentView: View {
                         ofs2 = ofs2-1
                         if ofs2 < -640{
                             ofs2 = 290
-                        }
-                    }.ignoresSafeArea()
+                    }
+                }.ignoresSafeArea()
             }.frame(alignment: .trailing)
-            
             
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
@@ -110,7 +107,8 @@ struct AQISheet: View{
                 
                 
                 VStack{
-                    Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default))
+                    Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 14, weight: .light, design: .default))
                     
                     ZStack {
                         RoundedRectangle(cornerRadius: 15.0).fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple, .indigo, Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125)], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
@@ -140,7 +138,8 @@ struct AQISheet: View{
                         Text("PM")
                         + Text("10 ").baselineOffset(-6.0).font(.system(size:10))
                         + Text("particles are small enough to be inhaled and typically result from construction, agricultural and desert dust, or pollen.")
-                    }.padding().frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
+                    }.padding().frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
                     Spacer()
             }.padding().edgesIgnoringSafeArea(.all)
         }
@@ -168,8 +167,10 @@ struct cityAQI: View{
                 Text("AIR QUALITY").font(.system(size: 12, weight: .medium, design: .default))
                 Spacer()
             }.foregroundColor(.white.opacity(0.6)).padding(.vertical, 5).frame(height:10)
-            Text("72 - Good").shadow(radius: 5.0).font(.system(size: 18, weight: .medium, design: .default)).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 3)
-            Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default))
+            Text("72 - Good").shadow(radius: 5.0).font(.system(size: 18, weight: .medium, design: .default))
+                .frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 3)
+            Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 14, weight: .light, design: .default))
             ZStack {
                 RoundedRectangle(cornerRadius: 15.0).fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple, .indigo, Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125)], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
                 HStack{
@@ -187,16 +188,19 @@ struct cityAQI: View{
                     AQISheetToggle.toggle()
                 }.sheet(isPresented: $AQISheetToggle){
                     AQISheet()
-                }//.frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 16, weight: .medium, design: .default))
+                }
                 Image(systemName: "chevron.right")
             }
-        }.padding().foregroundColor(.white).frame(width:350).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
+        }.padding().foregroundColor(.white)
+            .frame(width:350).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
     }
 }
 
 var cityHourlyForecast: some View{
     VStack{
-        Text("Higher temperatures expected tomorrow, with a high of 28°").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default))
+        Text("Higher temperatures expected tomorrow, with a high of 28°")
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 14, weight: .light, design: .default))
         Divider()
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing:25){
@@ -223,7 +227,6 @@ var cityHourlyForecast: some View{
                     HourlyView(time: "05:46", image: "sunrise.fill", temp: "Sunrise")
                     HourlyView(time: "06", image: "sun.max.fill", temp: "20°")
                     HourlyView(time: "07", image: "cloud.sun.fill", temp: "20°")
-                    
                 }
                 Group{
                     HourlyView(time: "08", image: "sun.max.fill", temp: "19°")
@@ -235,9 +238,9 @@ var cityHourlyForecast: some View{
                     HourlyView(time: "14", image: "cloud.sun.fill", temp: "17°")
                 }
             }
-            
         }
-    }.padding().foregroundColor(.white).frame(width: 350).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
+    }.padding().foregroundColor(.white).frame(width: 350)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
 }
 
 var UVIndex: some View{
@@ -246,19 +249,22 @@ var UVIndex: some View{
             Image(systemName: "sun.max.fill").resizable().frame(width: 15, height:15)
             Text("UV INDEX").font(.system(size: 12, weight: .medium, design: .default))
             Spacer()
-        }.foregroundColor(.white.opacity(0.6)).padding(.bottom, 10).frame(height:10)
+        }.foregroundColor(.white.opacity(0.6))
+            .padding(.bottom, 10).frame(height:10)
         Text("9").frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: 18, weight: .medium, design: .default))
-        Text("Very High").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 18, weight: .medium, design: .default))
+        Text("Very High").frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 18, weight: .medium, design: .default))
         ZStack{
-            RoundedRectangle(cornerRadius: 15.0).fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
+            RoundedRectangle(cornerRadius: 15.0)
+                .fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
             Circle().strokeBorder(.teal.opacity(0.8), lineWidth: 2).frame(width:8).background(Circle().foregroundColor(.white)).offset(x:40)
-            //.frame(width:350).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
-            // Circle().strokeBorder(.teal.opacity(0.8), lineWidth: 2).frame(width:8).background(Circle().foregroundColor(.white))
         }.padding(0)
-        Text("Use sun protection \nuntil 17:00").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 12, weight: .medium, design: .default)).padding(.top, 0)
+        Text("Use sun protection \nuntil 17:00").frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 12, weight: .medium, design: .default)).padding(.top, 0)
         
-    }.padding(15).foregroundColor(.white).frame(width:175).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
+    }.padding(15).foregroundColor(.white)
+        .frame(width:175).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
 }
 
 var HumidityForecast: some View{
@@ -270,18 +276,21 @@ var HumidityForecast: some View{
         }.foregroundColor(.white.opacity(0.6)).padding(.bottom, 10).frame(height:10)
         Text("10 mm").frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: 18, weight: .medium, design: .default))
-        Text("in last 24 hours").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 16, weight: .medium, design: .default))
+        Text("in last 24 hours").frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 16, weight: .medium, design: .default))
         Spacer()
-        Text("Next expected is \n8 mm on Mon.").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 12, weight: .medium, design: .default)).padding(.top, 10)
+        Text("Next expected is \n8 mm on Mon.").frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 12, weight: .medium, design: .default)).padding(.top, 10)
         
-    }.padding(15).foregroundColor(.white).frame(width:170, height: 170).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
+    }.padding(15).foregroundColor(.white).frame(width:170, height: 170)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0))
 }
 
 
 var cityDailyForecast: some View{
     VStack {
         HStack{
-            Image(systemName: "calendar").font(.system(size:15))//.frame(width:30, height:30, alignment: .center))//.resizable().frame(width: 15, height:15)
+            Image(systemName: "calendar").font(.system(size:15))
             Text("10-DAY FORECAST").font(.system(size: 12, weight: .medium, design: .default)).frame(height:30)
             Spacer()
         }.foregroundColor(.white.opacity(0.6)).padding(.vertical, 5).frame(height:10)
@@ -322,8 +331,6 @@ func GetChance() -> String{
 }
 
 struct DailyView: View {
-    
-    
     var time: String
     var image: String
     var temp1: Int
@@ -333,10 +340,10 @@ struct DailyView: View {
     var max: Int
     @State var currtemp:Float
     
-    
     var body: some View {
         HStack{
-            Text(time).frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 16, weight: .medium, design: .default))
+            Text(time).frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 16, weight: .medium, design: .default))
             VStack{
                 Image(systemName: image).renderingMode(.original)//.frame(maxWidth: .infinity, alignment: .leading)
                 if image == "cloud.rain.fill" || image == "cloud.bolt.rain.fill"{
@@ -377,7 +384,7 @@ struct HourlyView: View {
     var body: some View {
         VStack{
             Text(time).padding(.bottom, 3).font(.system(size: 14, weight: .medium, design: .default))
-            Image(systemName: image).renderingMode(.original).font(.system(size:20)).frame(width:30, height:30)//.border(.red)//.resizable().scaledToFit().frame(width: 30, height:30)
+            Image(systemName: image).renderingMode(.original).font(.system(size:20)).frame(width:30, height:30)
             Text(temp).padding(.top, 3).font(.system(size: 16, weight: .bold, design: .default))
         }.padding(.top, 10)
     }
