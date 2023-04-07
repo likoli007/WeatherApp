@@ -17,6 +17,7 @@ struct ContentView: View {
                     cityAQI
                     cityHourlyForecast
                     cityDailyForecast
+                    UVIndex
                     Spacer()
                 }
             }
@@ -95,6 +96,26 @@ var cityHourlyForecast: some View{
     }.padding(20).foregroundColor(.white)
 }
 
+var UVIndex: some View{
+    VStack{
+        HStack{
+            Image(systemName: "sun.max.fill")
+            Text("UV INDEX")
+        }
+        Text("9")
+        Text("Very High")
+        ZStack{
+            Rectangle().fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
+            Circle().strokeBorder(.black, lineWidth: 2).frame(width:8).background(Circle().foregroundColor(.white)).offset(x:30)
+        }
+        Text("Use sun protection until 17:00")
+        
+    }.padding(20).foregroundColor(.white)
+}
+
+
+
+
 var cityDailyForecast: some View{
     VStack {
         HStack{
@@ -139,14 +160,13 @@ struct DailyView: View {
             Text(String(temp1))
             
             ZStack {
-                var size: Int = max - min;
-                var start: Int = temp1 - min;
-                var end: Int = max - temp2;
-                var range: Int = temp2 - temp1;
-                var step: Float = 70 / Float(size);
+                let size: Int = max - min;
+                let start: Int = temp1 - min;
+                let range: Int = temp2 - temp1;
+                let step: Float = 70 / Float(size);
 
-                var w: Float = 70 - (Float(size - range) * step);
-                var half: Float = w / 2;
+                let w: Float = 70 - (Float(size - range) * step);
+                let half: Float = w / 2;
                 
                 Rectangle().fill(.gray).frame(width: 70, height: 6)
                 Rectangle().fill(
@@ -176,3 +196,4 @@ struct HourlyView: View {
         }
     }
 }
+
