@@ -92,57 +92,68 @@ var cityInformationTop: some View{
 struct AQISheet: View{
     @Environment(\.dismiss) var isPresented
     
-    
+    @State var scale = 0.0
+    @State var opacity = 0.0
     
     var body: some View {
         
-        VStack{
-            HStack{
-                Image(systemName: "aqi.low").resizable().frame(width: 30, height:30)
-                Text("Air Quality").font(.system(size: 20, weight: .medium, design: .default))
-            }.foregroundColor(.white.opacity(0.6)).padding(.top, 30).padding(.bottom, 0).frame(height:10)
-            
-            Text("Good").font(.system(size: 22, weight: .bold, design: .default))
-                .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
-            Text("Scale: China(AQI)").font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(.white.opacity(0.6)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 0)
-            
-            
+        VStack {
             VStack{
-                Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default))
+                HStack{
+                    Image(systemName: "aqi.low").resizable().frame(width: 30, height:30)
+                    Text("Air Quality").font(.system(size: 20, weight: .medium, design: .default))
+                }.foregroundColor(.white.opacity(0.6)).padding(.top, 30).padding(.bottom, 0).frame(height:10)
                 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 15.0).fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple, .indigo, Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125)], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
-                    HStack{
-                        Spacer()
-                        Circle().strokeBorder(.gray.opacity(1), lineWidth: 2).frame(width:8).background(Circle().foregroundColor(.white))
-                        Spacer()
-                        Spacer()
-                    }
+                Text("Good").font(.system(size: 22, weight: .bold, design: .default))
+                    .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
+                Text("Scale: China(AQI)").font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(.white.opacity(0.6)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 0)
+                
+                
+                VStack{
+                    Text("Current AQI (CN) is 72.").frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default))
                     
-                }.frame(height:8)
-            }.padding().frame(width:350, height: 60).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
-            Group{
-                Text("Health Information").font(.system(size: 22, weight: .bold, design: .default))
-                    .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
-                Text("Extremely sensitive groups should reduce outdoor activities").padding().frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
-            }
-                Text("Primary Pollutant").font(.system(size: 22, weight: .bold, design: .default))
-                    .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15.0).fill(LinearGradient(colors:[.green,.green, .yellow, .red, .purple, .indigo, Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125), Color(red: 0.52, green: 0.0, blue: 0.125)], startPoint: .leading, endPoint: .trailing)).frame( height: 6)
+                        HStack{
+                            Spacer()
+                            Circle().strokeBorder(.gray.opacity(1), lineWidth: 2).frame(width:8).background(Circle().foregroundColor(.white))
+                            Spacer()
+                            Spacer()
+                        }
+                        
+                    }.frame(height:8)
+                }.padding().frame(width:350, height: 60).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
                 Group{
-                   
-                    Text("PM")
-                    + Text("10 ").baselineOffset(-6.0).font(.system(size:10))
-                    + Text("(particulate matter under 10µm)")
-                }.font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(.white.opacity(0.6)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 0)
-                Group{
-                    Text("PM")
-                    + Text("10 ").baselineOffset(-6.0).font(.system(size:10))
-                    + Text("particles are small enough to be inhaled and typically result from construction, agricultural and desert dust, or pollen.")
-                }.padding().frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
-                Spacer()
-            }.padding().edgesIgnoringSafeArea(.all)//maxWidth: .infinity, maxHeight: .infinity)
-            
+                    Text("Health Information").font(.system(size: 22, weight: .bold, design: .default))
+                        .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
+                    Text("Extremely sensitive groups should reduce outdoor activities").padding().frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
+                }
+                    Text("Primary Pollutant").font(.system(size: 22, weight: .bold, design: .default))
+                        .frame(maxWidth: .infinity, alignment: .leading).padding(.top, 30)
+                    Group{
+                       
+                        Text("PM")
+                        + Text("10 ").baselineOffset(-6.0).font(.system(size:10))
+                        + Text("(particulate matter under 10µm)")
+                    }.font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(.white.opacity(0.6)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 0)
+                    Group{
+                        Text("PM")
+                        + Text("10 ").baselineOffset(-6.0).font(.system(size:10))
+                        + Text("particles are small enough to be inhaled and typically result from construction, agricultural and desert dust, or pollen.")
+                    }.padding().frame(maxWidth: .infinity, alignment: .leading).font(.system(size: 14, weight: .light, design: .default)).background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10.0))
+                    Spacer()
+            }.padding().edgesIgnoringSafeArea(.all)
         }
+        .scaleEffect(scale)
+        .opacity(opacity)
+        .onAppear(){
+            withAnimation(Animation.easeInOut(duration: 1)){
+                scale = 1.0
+                opacity = 1.0
+            }
+    }
+            
+    }
     
 }
 
