@@ -1,6 +1,8 @@
 # WeatherApp
 A simple weather app for the 《移动平台开发》course
 
+link: https://github.com/likoli007/WeatherApp
+
 本次作业由于我利用了Iphone 14模拟器，所以如果用Ipad来看本项目，所有的元素可能会看起来太小。
 我后来切换到Iphone SE，Iphone SE的界面还是符合我设计的的样子。
 因此本项目的运行条件是需要手机版本看，而不可以用Ipad版本。
