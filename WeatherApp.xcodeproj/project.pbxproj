@@ -14,6 +14,10 @@
 		4CEABC8629DBB465008C6A0D /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEABC8529DBB465008C6A0D /* WeatherAppTests.swift */; };
 		4CEABC9029DBB465008C6A0D /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEABC8F29DBB465008C6A0D /* WeatherAppUITests.swift */; };
 		4CEABC9229DBB465008C6A0D /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEABC9129DBB465008C6A0D /* WeatherAppUITestsLaunchTests.swift */; };
+		4CEABCA029DFD283008C6A0D /* Daco_390707.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEABC9F29DFD283008C6A0D /* Daco_390707.png */; };
+		4CEABCA429DFEB69008C6A0D /* Daco_5869887.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEABCA329DFEB69008C6A0D /* Daco_5869887.png */; };
+		4CEABCA629DFEE15008C6A0D /* Daco_4318142.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEABCA529DFEE15008C6A0D /* Daco_4318142.png */; };
+		4CEABCA829DFEFC5008C6A0D /* Daco_4555830.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEABCA729DFEFC5008C6A0D /* Daco_4555830.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,11 @@
 		4CEABC8B29DBB465008C6A0D /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEABC8F29DBB465008C6A0D /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		4CEABC9129DBB465008C6A0D /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4CEABC9F29DFD283008C6A0D /* Daco_390707.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Daco_390707.png; path = ../../../../Downloads/Daco_390707.png; sourceTree = "<group>"; };
+		4CEABCA229DFD2A3008C6A0D /* Daco_390707.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Daco_390707.png; sourceTree = "<group>"; };
+		4CEABCA329DFEB69008C6A0D /* Daco_5869887.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Daco_5869887.png; path = ../../../../Downloads/Daco_5869887.png; sourceTree = "<group>"; };
+		4CEABCA529DFEE15008C6A0D /* Daco_4318142.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Daco_4318142.png; path = ../../../../Downloads/Daco_4318142.png; sourceTree = "<group>"; };
+		4CEABCA729DFEFC5008C6A0D /* Daco_4555830.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Daco_4555830.png; path = ../../../../Downloads/Daco_4555830.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +104,7 @@
 		4CEABC7229DBB464008C6A0D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4CEABCA129DFD295008C6A0D /* files */,
 				4CEABC7329DBB464008C6A0D /* WeatherAppApp.swift */,
 				4CEABC7529DBB464008C6A0D /* ContentView.swift */,
 				4CEABC7729DBB465008C6A0D /* Assets.xcassets */,
@@ -107,6 +117,7 @@
 		4CEABC7A29DBB465008C6A0D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				4CEABC9F29DFD283008C6A0D /* Daco_390707.png */,
 				4CEABC7B29DBB465008C6A0D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -127,6 +138,17 @@
 				4CEABC9129DBB465008C6A0D /* WeatherAppUITestsLaunchTests.swift */,
 			);
 			path = WeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		4CEABCA129DFD295008C6A0D /* files */ = {
+			isa = PBXGroup;
+			children = (
+				4CEABCA729DFEFC5008C6A0D /* Daco_4555830.png */,
+				4CEABCA529DFEE15008C6A0D /* Daco_4318142.png */,
+				4CEABCA329DFEB69008C6A0D /* Daco_5869887.png */,
+				4CEABCA229DFD2A3008C6A0D /* Daco_390707.png */,
+			);
+			path = files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +255,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CEABCA629DFEE15008C6A0D /* Daco_4318142.png in Resources */,
+				4CEABCA429DFEB69008C6A0D /* Daco_5869887.png in Resources */,
 				4CEABC7C29DBB465008C6A0D /* Preview Assets.xcassets in Resources */,
+				4CEABCA029DFD283008C6A0D /* Daco_390707.png in Resources */,
 				4CEABC7829DBB465008C6A0D /* Assets.xcassets in Resources */,
+				4CEABCA829DFEFC5008C6A0D /* Daco_4555830.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

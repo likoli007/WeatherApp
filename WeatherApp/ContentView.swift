@@ -6,11 +6,47 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
+    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    @State var tick = false
+    
+    //let animation: Animation = Animation.linear(duration:10.0).repeatForever(autoreverses: false)
+    
+    let img: Image = Image("Daco_4555830").resizable()
+    let img2: Image = Image("Daco_4318142").resizable()
+    
+    @State var ofs1: Int = -30;
+    @State var ofs2: Int = 50;
+    
     var body: some View {
         ZStack{
             backgroundSunshine
+            
+
+            ZStack {
+                img.offset(x: CGFloat(ofs1), y: -300)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 200.0, height: 300, alignment: .trailing)
+                    .onReceive(timer){_ in
+                        ofs1 = ofs1-1
+                        if ofs1 < -275{
+                            ofs1 = 650
+                        }
+                    }.ignoresSafeArea()
+                img2.offset(x: CGFloat(ofs2), y: -300)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 200.0, height: 300, alignment: .leading)
+                    .onReceive(timer){_ in
+                        ofs2 = ofs2-1
+                        if ofs2 < -640{
+                            ofs2 = 290
+                        }
+                    }.ignoresSafeArea()
+            }.frame(alignment: .trailing)
+            
+            
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
                     cityInformationTop
@@ -32,17 +68,19 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 var backgroundSunshine: some View{
-    LinearGradient(colors: [.blue, .cyan],
-                   startPoint: .topLeading,
-                   endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
-    
+    ZStack{
+        LinearGradient(colors: [.blue, .cyan],
+                       startPoint: .topLeading,
+                       endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+        
+    }
 }
 
 var cityInformationTop: some View{
     VStack {
         Text("Bratislava").font(.system(size: 40, weight: .medium, design: .default))
         Text("21°").font(.system(size: 64, weight: .thin, design: .default))
-        Text("Sunny").font(.system(size: 20, weight: .medium, design: .default))
+        Text("Cloudy").font(.system(size: 20, weight: .medium, design: .default))
         HStack{
             Text("H: 23°").font(.system(size: 20, weight: .medium, design: .default))
             Text("L: 16°").font(.system(size: 20, weight: .medium, design: .default))
@@ -81,7 +119,7 @@ var cityHourlyForecast: some View{
         Divider()
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing:30){
-                HourlyView(time: "Now", image: "sun.max.fill", temp: "21°")
+                HourlyView(time: "Now", image: "cloud.sun.fill", temp: "21°")
                 HourlyView(time: "15", image: "sun.max.fill", temp: "23°")
                 HourlyView(time: "16", image: "cloud.sun.fill", temp: "20°")
                 HourlyView(time: "17", image: "cloud.sun.fill", temp: "19°")
